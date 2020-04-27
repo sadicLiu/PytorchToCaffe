@@ -1,0 +1,9 @@
+0 军人_military
+1 军舰_warship
+2 军车_vehicle
+3 坦克_tank
+4 导弹_missile
+5 战斗机_warplane
+6 步枪_rifle
+7 潜艇_submarine
+8 炮_cannon

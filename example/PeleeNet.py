@@ -120,8 +120,8 @@ class BasicConv2d(nn.Module):
         x = self.conv(x)
         x = self.norm(x)
         if self.activation:
-            # return F.relu(x, inplace=True)
-            return F.relu6(x, inplace=True)
+            return F.relu(x, inplace=True)
+            # return F.relu6(x, inplace=True)
         else:
             return x
 

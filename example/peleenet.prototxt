@@ -29,7 +29,7 @@ layer {
   top: "batch_norm_blob1"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -42,27 +42,27 @@ layer {
   }
 }
 layer {
-  name: "relu61"
-  type: "ReLU6"
+  name: "relu1"
+  type: "ReLU"
   bottom: "batch_norm_blob1"
-  top: "relu6_blob1"
+  top: "relu_blob1"
 }
 layer {
   name: "max_pool1"
   type: "Pooling"
-  bottom: "relu6_blob1"
+  bottom: "relu_blob1"
   top: "max_pool_blob1"
   pooling_param {
     pool: MAX
     kernel_size: 2
     stride: 2
-    ceil_mode: false
+    round_mode: FLOOR
   }
 }
 layer {
   name: "conv2"
   type: "Convolution"
-  bottom: "relu6_blob1"
+  bottom: "relu_blob1"
   top: "conv_blob2"
   convolution_param {
     num_output: 16
@@ -84,7 +84,7 @@ layer {
   top: "batch_norm_blob2"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -97,15 +97,15 @@ layer {
   }
 }
 layer {
-  name: "relu62"
-  type: "ReLU6"
+  name: "relu2"
+  type: "ReLU"
   bottom: "batch_norm_blob2"
-  top: "relu6_blob2"
+  top: "relu_blob2"
 }
 layer {
   name: "conv3"
   type: "Convolution"
-  bottom: "relu6_blob2"
+  bottom: "relu_blob2"
   top: "conv_blob3"
   convolution_param {
     num_output: 32
@@ -127,7 +127,7 @@ layer {
   top: "batch_norm_blob3"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -140,16 +140,16 @@ layer {
   }
 }
 layer {
-  name: "relu63"
-  type: "ReLU6"
+  name: "relu3"
+  type: "ReLU"
   bottom: "batch_norm_blob3"
-  top: "relu6_blob3"
+  top: "relu_blob3"
 }
 layer {
   name: "cat1"
   type: "Concat"
   bottom: "max_pool_blob1"
-  bottom: "relu6_blob3"
+  bottom: "relu_blob3"
   top: "cat_blob1"
   concat_param {
     axis: 1
@@ -180,7 +180,7 @@ layer {
   top: "batch_norm_blob4"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -193,15 +193,15 @@ layer {
   }
 }
 layer {
-  name: "relu64"
-  type: "ReLU6"
+  name: "relu4"
+  type: "ReLU"
   bottom: "batch_norm_blob4"
-  top: "relu6_blob4"
+  top: "relu_blob4"
 }
 layer {
   name: "conv5"
   type: "Convolution"
-  bottom: "relu6_blob4"
+  bottom: "relu_blob4"
   top: "conv_blob5"
   convolution_param {
     num_output: 16
@@ -223,7 +223,7 @@ layer {
   top: "batch_norm_blob5"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -236,15 +236,15 @@ layer {
   }
 }
 layer {
-  name: "relu65"
-  type: "ReLU6"
+  name: "relu5"
+  type: "ReLU"
   bottom: "batch_norm_blob5"
-  top: "relu6_blob5"
+  top: "relu_blob5"
 }
 layer {
   name: "conv6"
   type: "Convolution"
-  bottom: "relu6_blob5"
+  bottom: "relu_blob5"
   top: "conv_blob6"
   convolution_param {
     num_output: 16
@@ -266,7 +266,7 @@ layer {
   top: "batch_norm_blob6"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -279,15 +279,15 @@ layer {
   }
 }
 layer {
-  name: "relu66"
-  type: "ReLU6"
+  name: "relu6"
+  type: "ReLU"
   bottom: "batch_norm_blob6"
-  top: "relu6_blob6"
+  top: "relu_blob6"
 }
 layer {
   name: "conv7"
   type: "Convolution"
-  bottom: "relu6_blob4"
+  bottom: "relu_blob4"
   top: "conv_blob7"
   convolution_param {
     num_output: 16
@@ -309,7 +309,7 @@ layer {
   top: "batch_norm_blob7"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -322,15 +322,15 @@ layer {
   }
 }
 layer {
-  name: "relu67"
-  type: "ReLU6"
+  name: "relu7"
+  type: "ReLU"
   bottom: "batch_norm_blob7"
-  top: "relu6_blob7"
+  top: "relu_blob7"
 }
 layer {
   name: "conv8"
   type: "Convolution"
-  bottom: "relu6_blob7"
+  bottom: "relu_blob7"
   top: "conv_blob8"
   convolution_param {
     num_output: 16
@@ -352,7 +352,7 @@ layer {
   top: "batch_norm_blob8"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -365,15 +365,15 @@ layer {
   }
 }
 layer {
-  name: "relu68"
-  type: "ReLU6"
+  name: "relu8"
+  type: "ReLU"
   bottom: "batch_norm_blob8"
-  top: "relu6_blob8"
+  top: "relu_blob8"
 }
 layer {
   name: "conv9"
   type: "Convolution"
-  bottom: "relu6_blob8"
+  bottom: "relu_blob8"
   top: "conv_blob9"
   convolution_param {
     num_output: 16
@@ -395,7 +395,7 @@ layer {
   top: "batch_norm_blob9"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -408,17 +408,17 @@ layer {
   }
 }
 layer {
-  name: "relu69"
-  type: "ReLU6"
+  name: "relu9"
+  type: "ReLU"
   bottom: "batch_norm_blob9"
-  top: "relu6_blob9"
+  top: "relu_blob9"
 }
 layer {
   name: "cat2"
   type: "Concat"
-  bottom: "relu6_blob4"
-  bottom: "relu6_blob6"
-  bottom: "relu6_blob9"
+  bottom: "relu_blob4"
+  bottom: "relu_blob6"
+  bottom: "relu_blob9"
   top: "cat_blob2"
   concat_param {
     axis: 1
@@ -449,7 +449,7 @@ layer {
   top: "batch_norm_blob10"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -462,15 +462,15 @@ layer {
   }
 }
 layer {
-  name: "relu610"
-  type: "ReLU6"
+  name: "relu10"
+  type: "ReLU"
   bottom: "batch_norm_blob10"
-  top: "relu6_blob10"
+  top: "relu_blob10"
 }
 layer {
   name: "conv11"
   type: "Convolution"
-  bottom: "relu6_blob10"
+  bottom: "relu_blob10"
   top: "conv_blob11"
   convolution_param {
     num_output: 16
@@ -492,7 +492,7 @@ layer {
   top: "batch_norm_blob11"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -505,10 +505,10 @@ layer {
   }
 }
 layer {
-  name: "relu611"
-  type: "ReLU6"
+  name: "relu11"
+  type: "ReLU"
   bottom: "batch_norm_blob11"
-  top: "relu6_blob11"
+  top: "relu_blob11"
 }
 layer {
   name: "conv12"
@@ -535,7 +535,7 @@ layer {
   top: "batch_norm_blob12"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -548,15 +548,15 @@ layer {
   }
 }
 layer {
-  name: "relu612"
-  type: "ReLU6"
+  name: "relu12"
+  type: "ReLU"
   bottom: "batch_norm_blob12"
-  top: "relu6_blob12"
+  top: "relu_blob12"
 }
 layer {
   name: "conv13"
   type: "Convolution"
-  bottom: "relu6_blob12"
+  bottom: "relu_blob12"
   top: "conv_blob13"
   convolution_param {
     num_output: 16
@@ -578,7 +578,7 @@ layer {
   top: "batch_norm_blob13"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -591,15 +591,15 @@ layer {
   }
 }
 layer {
-  name: "relu613"
-  type: "ReLU6"
+  name: "relu13"
+  type: "ReLU"
   bottom: "batch_norm_blob13"
-  top: "relu6_blob13"
+  top: "relu_blob13"
 }
 layer {
   name: "conv14"
   type: "Convolution"
-  bottom: "relu6_blob13"
+  bottom: "relu_blob13"
   top: "conv_blob14"
   convolution_param {
     num_output: 16
@@ -621,7 +621,7 @@ layer {
   top: "batch_norm_blob14"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -634,17 +634,17 @@ layer {
   }
 }
 layer {
-  name: "relu614"
-  type: "ReLU6"
+  name: "relu14"
+  type: "ReLU"
   bottom: "batch_norm_blob14"
-  top: "relu6_blob14"
+  top: "relu_blob14"
 }
 layer {
   name: "cat3"
   type: "Concat"
   bottom: "cat_blob2"
-  bottom: "relu6_blob11"
-  bottom: "relu6_blob14"
+  bottom: "relu_blob11"
+  bottom: "relu_blob14"
   top: "cat_blob3"
   concat_param {
     axis: 1
@@ -675,7 +675,7 @@ layer {
   top: "batch_norm_blob15"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -688,15 +688,15 @@ layer {
   }
 }
 layer {
-  name: "relu615"
-  type: "ReLU6"
+  name: "relu15"
+  type: "ReLU"
   bottom: "batch_norm_blob15"
-  top: "relu6_blob15"
+  top: "relu_blob15"
 }
 layer {
   name: "conv16"
   type: "Convolution"
-  bottom: "relu6_blob15"
+  bottom: "relu_blob15"
   top: "conv_blob16"
   convolution_param {
     num_output: 16
@@ -718,7 +718,7 @@ layer {
   top: "batch_norm_blob16"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -731,10 +731,10 @@ layer {
   }
 }
 layer {
-  name: "relu616"
-  type: "ReLU6"
+  name: "relu16"
+  type: "ReLU"
   bottom: "batch_norm_blob16"
-  top: "relu6_blob16"
+  top: "relu_blob16"
 }
 layer {
   name: "conv17"
@@ -761,7 +761,7 @@ layer {
   top: "batch_norm_blob17"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -774,15 +774,15 @@ layer {
   }
 }
 layer {
-  name: "relu617"
-  type: "ReLU6"
+  name: "relu17"
+  type: "ReLU"
   bottom: "batch_norm_blob17"
-  top: "relu6_blob17"
+  top: "relu_blob17"
 }
 layer {
   name: "conv18"
   type: "Convolution"
-  bottom: "relu6_blob17"
+  bottom: "relu_blob17"
   top: "conv_blob18"
   convolution_param {
     num_output: 16
@@ -804,7 +804,7 @@ layer {
   top: "batch_norm_blob18"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -817,15 +817,15 @@ layer {
   }
 }
 layer {
-  name: "relu618"
-  type: "ReLU6"
+  name: "relu18"
+  type: "ReLU"
   bottom: "batch_norm_blob18"
-  top: "relu6_blob18"
+  top: "relu_blob18"
 }
 layer {
   name: "conv19"
   type: "Convolution"
-  bottom: "relu6_blob18"
+  bottom: "relu_blob18"
   top: "conv_blob19"
   convolution_param {
     num_output: 16
@@ -847,7 +847,7 @@ layer {
   top: "batch_norm_blob19"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -860,17 +860,17 @@ layer {
   }
 }
 layer {
-  name: "relu619"
-  type: "ReLU6"
+  name: "relu19"
+  type: "ReLU"
   bottom: "batch_norm_blob19"
-  top: "relu6_blob19"
+  top: "relu_blob19"
 }
 layer {
   name: "cat4"
   type: "Concat"
   bottom: "cat_blob3"
-  bottom: "relu6_blob16"
-  bottom: "relu6_blob19"
+  bottom: "relu_blob16"
+  bottom: "relu_blob19"
   top: "cat_blob4"
   concat_param {
     axis: 1
@@ -901,7 +901,7 @@ layer {
   top: "batch_norm_blob20"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -914,21 +914,21 @@ layer {
   }
 }
 layer {
-  name: "relu620"
-  type: "ReLU6"
+  name: "relu20"
+  type: "ReLU"
   bottom: "batch_norm_blob20"
-  top: "relu6_blob20"
+  top: "relu_blob20"
 }
 layer {
   name: "ave_pool1"
   type: "Pooling"
-  bottom: "relu6_blob20"
+  bottom: "relu_blob20"
   top: "ave_pool_blob1"
   pooling_param {
     pool: AVE
     kernel_size: 2
     stride: 2
-    ceil_mode: false
+    round_mode: FLOOR
   }
 }
 layer {
@@ -956,7 +956,7 @@ layer {
   top: "batch_norm_blob21"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -969,15 +969,15 @@ layer {
   }
 }
 layer {
-  name: "relu621"
-  type: "ReLU6"
+  name: "relu21"
+  type: "ReLU"
   bottom: "batch_norm_blob21"
-  top: "relu6_blob21"
+  top: "relu_blob21"
 }
 layer {
   name: "conv22"
   type: "Convolution"
-  bottom: "relu6_blob21"
+  bottom: "relu_blob21"
   top: "conv_blob22"
   convolution_param {
     num_output: 16
@@ -999,7 +999,7 @@ layer {
   top: "batch_norm_blob22"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1012,10 +1012,10 @@ layer {
   }
 }
 layer {
-  name: "relu622"
-  type: "ReLU6"
+  name: "relu22"
+  type: "ReLU"
   bottom: "batch_norm_blob22"
-  top: "relu6_blob22"
+  top: "relu_blob22"
 }
 layer {
   name: "conv23"
@@ -1042,7 +1042,7 @@ layer {
   top: "batch_norm_blob23"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1055,15 +1055,15 @@ layer {
   }
 }
 layer {
-  name: "relu623"
-  type: "ReLU6"
+  name: "relu23"
+  type: "ReLU"
   bottom: "batch_norm_blob23"
-  top: "relu6_blob23"
+  top: "relu_blob23"
 }
 layer {
   name: "conv24"
   type: "Convolution"
-  bottom: "relu6_blob23"
+  bottom: "relu_blob23"
   top: "conv_blob24"
   convolution_param {
     num_output: 16
@@ -1085,7 +1085,7 @@ layer {
   top: "batch_norm_blob24"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1098,15 +1098,15 @@ layer {
   }
 }
 layer {
-  name: "relu624"
-  type: "ReLU6"
+  name: "relu24"
+  type: "ReLU"
   bottom: "batch_norm_blob24"
-  top: "relu6_blob24"
+  top: "relu_blob24"
 }
 layer {
   name: "conv25"
   type: "Convolution"
-  bottom: "relu6_blob24"
+  bottom: "relu_blob24"
   top: "conv_blob25"
   convolution_param {
     num_output: 16
@@ -1128,7 +1128,7 @@ layer {
   top: "batch_norm_blob25"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1141,17 +1141,17 @@ layer {
   }
 }
 layer {
-  name: "relu625"
-  type: "ReLU6"
+  name: "relu25"
+  type: "ReLU"
   bottom: "batch_norm_blob25"
-  top: "relu6_blob25"
+  top: "relu_blob25"
 }
 layer {
   name: "cat5"
   type: "Concat"
   bottom: "ave_pool_blob1"
-  bottom: "relu6_blob22"
-  bottom: "relu6_blob25"
+  bottom: "relu_blob22"
+  bottom: "relu_blob25"
   top: "cat_blob5"
   concat_param {
     axis: 1
@@ -1182,7 +1182,7 @@ layer {
   top: "batch_norm_blob26"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1195,15 +1195,15 @@ layer {
   }
 }
 layer {
-  name: "relu626"
-  type: "ReLU6"
+  name: "relu26"
+  type: "ReLU"
   bottom: "batch_norm_blob26"
-  top: "relu6_blob26"
+  top: "relu_blob26"
 }
 layer {
   name: "conv27"
   type: "Convolution"
-  bottom: "relu6_blob26"
+  bottom: "relu_blob26"
   top: "conv_blob27"
   convolution_param {
     num_output: 16
@@ -1225,7 +1225,7 @@ layer {
   top: "batch_norm_blob27"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1238,10 +1238,10 @@ layer {
   }
 }
 layer {
-  name: "relu627"
-  type: "ReLU6"
+  name: "relu27"
+  type: "ReLU"
   bottom: "batch_norm_blob27"
-  top: "relu6_blob27"
+  top: "relu_blob27"
 }
 layer {
   name: "conv28"
@@ -1268,7 +1268,7 @@ layer {
   top: "batch_norm_blob28"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1281,15 +1281,15 @@ layer {
   }
 }
 layer {
-  name: "relu628"
-  type: "ReLU6"
+  name: "relu28"
+  type: "ReLU"
   bottom: "batch_norm_blob28"
-  top: "relu6_blob28"
+  top: "relu_blob28"
 }
 layer {
   name: "conv29"
   type: "Convolution"
-  bottom: "relu6_blob28"
+  bottom: "relu_blob28"
   top: "conv_blob29"
   convolution_param {
     num_output: 16
@@ -1311,7 +1311,7 @@ layer {
   top: "batch_norm_blob29"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1324,15 +1324,15 @@ layer {
   }
 }
 layer {
-  name: "relu629"
-  type: "ReLU6"
+  name: "relu29"
+  type: "ReLU"
   bottom: "batch_norm_blob29"
-  top: "relu6_blob29"
+  top: "relu_blob29"
 }
 layer {
   name: "conv30"
   type: "Convolution"
-  bottom: "relu6_blob29"
+  bottom: "relu_blob29"
   top: "conv_blob30"
   convolution_param {
     num_output: 16
@@ -1354,7 +1354,7 @@ layer {
   top: "batch_norm_blob30"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1367,17 +1367,17 @@ layer {
   }
 }
 layer {
-  name: "relu630"
-  type: "ReLU6"
+  name: "relu30"
+  type: "ReLU"
   bottom: "batch_norm_blob30"
-  top: "relu6_blob30"
+  top: "relu_blob30"
 }
 layer {
   name: "cat6"
   type: "Concat"
   bottom: "cat_blob5"
-  bottom: "relu6_blob27"
-  bottom: "relu6_blob30"
+  bottom: "relu_blob27"
+  bottom: "relu_blob30"
   top: "cat_blob6"
   concat_param {
     axis: 1
@@ -1408,7 +1408,7 @@ layer {
   top: "batch_norm_blob31"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1421,15 +1421,15 @@ layer {
   }
 }
 layer {
-  name: "relu631"
-  type: "ReLU6"
+  name: "relu31"
+  type: "ReLU"
   bottom: "batch_norm_blob31"
-  top: "relu6_blob31"
+  top: "relu_blob31"
 }
 layer {
   name: "conv32"
   type: "Convolution"
-  bottom: "relu6_blob31"
+  bottom: "relu_blob31"
   top: "conv_blob32"
   convolution_param {
     num_output: 16
@@ -1451,7 +1451,7 @@ layer {
   top: "batch_norm_blob32"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1464,10 +1464,10 @@ layer {
   }
 }
 layer {
-  name: "relu632"
-  type: "ReLU6"
+  name: "relu32"
+  type: "ReLU"
   bottom: "batch_norm_blob32"
-  top: "relu6_blob32"
+  top: "relu_blob32"
 }
 layer {
   name: "conv33"
@@ -1494,7 +1494,7 @@ layer {
   top: "batch_norm_blob33"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1507,15 +1507,15 @@ layer {
   }
 }
 layer {
-  name: "relu633"
-  type: "ReLU6"
+  name: "relu33"
+  type: "ReLU"
   bottom: "batch_norm_blob33"
-  top: "relu6_blob33"
+  top: "relu_blob33"
 }
 layer {
   name: "conv34"
   type: "Convolution"
-  bottom: "relu6_blob33"
+  bottom: "relu_blob33"
   top: "conv_blob34"
   convolution_param {
     num_output: 16
@@ -1537,7 +1537,7 @@ layer {
   top: "batch_norm_blob34"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1550,15 +1550,15 @@ layer {
   }
 }
 layer {
-  name: "relu634"
-  type: "ReLU6"
+  name: "relu34"
+  type: "ReLU"
   bottom: "batch_norm_blob34"
-  top: "relu6_blob34"
+  top: "relu_blob34"
 }
 layer {
   name: "conv35"
   type: "Convolution"
-  bottom: "relu6_blob34"
+  bottom: "relu_blob34"
   top: "conv_blob35"
   convolution_param {
     num_output: 16
@@ -1580,7 +1580,7 @@ layer {
   top: "batch_norm_blob35"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1593,17 +1593,17 @@ layer {
   }
 }
 layer {
-  name: "relu635"
-  type: "ReLU6"
+  name: "relu35"
+  type: "ReLU"
   bottom: "batch_norm_blob35"
-  top: "relu6_blob35"
+  top: "relu_blob35"
 }
 layer {
   name: "cat7"
   type: "Concat"
   bottom: "cat_blob6"
-  bottom: "relu6_blob32"
-  bottom: "relu6_blob35"
+  bottom: "relu_blob32"
+  bottom: "relu_blob35"
   top: "cat_blob7"
   concat_param {
     axis: 1
@@ -1634,7 +1634,7 @@ layer {
   top: "batch_norm_blob36"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1647,15 +1647,15 @@ layer {
   }
 }
 layer {
-  name: "relu636"
-  type: "ReLU6"
+  name: "relu36"
+  type: "ReLU"
   bottom: "batch_norm_blob36"
-  top: "relu6_blob36"
+  top: "relu_blob36"
 }
 layer {
   name: "conv37"
   type: "Convolution"
-  bottom: "relu6_blob36"
+  bottom: "relu_blob36"
   top: "conv_blob37"
   convolution_param {
     num_output: 16
@@ -1677,7 +1677,7 @@ layer {
   top: "batch_norm_blob37"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1690,10 +1690,10 @@ layer {
   }
 }
 layer {
-  name: "relu637"
-  type: "ReLU6"
+  name: "relu37"
+  type: "ReLU"
   bottom: "batch_norm_blob37"
-  top: "relu6_blob37"
+  top: "relu_blob37"
 }
 layer {
   name: "conv38"
@@ -1720,7 +1720,7 @@ layer {
   top: "batch_norm_blob38"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1733,15 +1733,15 @@ layer {
   }
 }
 layer {
-  name: "relu638"
-  type: "ReLU6"
+  name: "relu38"
+  type: "ReLU"
   bottom: "batch_norm_blob38"
-  top: "relu6_blob38"
+  top: "relu_blob38"
 }
 layer {
   name: "conv39"
   type: "Convolution"
-  bottom: "relu6_blob38"
+  bottom: "relu_blob38"
   top: "conv_blob39"
   convolution_param {
     num_output: 16
@@ -1763,7 +1763,7 @@ layer {
   top: "batch_norm_blob39"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1776,15 +1776,15 @@ layer {
   }
 }
 layer {
-  name: "relu639"
-  type: "ReLU6"
+  name: "relu39"
+  type: "ReLU"
   bottom: "batch_norm_blob39"
-  top: "relu6_blob39"
+  top: "relu_blob39"
 }
 layer {
   name: "conv40"
   type: "Convolution"
-  bottom: "relu6_blob39"
+  bottom: "relu_blob39"
   top: "conv_blob40"
   convolution_param {
     num_output: 16
@@ -1806,7 +1806,7 @@ layer {
   top: "batch_norm_blob40"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1819,17 +1819,17 @@ layer {
   }
 }
 layer {
-  name: "relu640"
-  type: "ReLU6"
+  name: "relu40"
+  type: "ReLU"
   bottom: "batch_norm_blob40"
-  top: "relu6_blob40"
+  top: "relu_blob40"
 }
 layer {
   name: "cat8"
   type: "Concat"
   bottom: "cat_blob7"
-  bottom: "relu6_blob37"
-  bottom: "relu6_blob40"
+  bottom: "relu_blob37"
+  bottom: "relu_blob40"
   top: "cat_blob8"
   concat_param {
     axis: 1
@@ -1860,7 +1860,7 @@ layer {
   top: "batch_norm_blob41"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1873,21 +1873,21 @@ layer {
   }
 }
 layer {
-  name: "relu641"
-  type: "ReLU6"
+  name: "relu41"
+  type: "ReLU"
   bottom: "batch_norm_blob41"
-  top: "relu6_blob41"
+  top: "relu_blob41"
 }
 layer {
   name: "ave_pool2"
   type: "Pooling"
-  bottom: "relu6_blob41"
+  bottom: "relu_blob41"
   top: "ave_pool_blob2"
   pooling_param {
     pool: AVE
     kernel_size: 2
     stride: 2
-    ceil_mode: false
+    round_mode: FLOOR
   }
 }
 layer {
@@ -1915,7 +1915,7 @@ layer {
   top: "batch_norm_blob42"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1928,15 +1928,15 @@ layer {
   }
 }
 layer {
-  name: "relu642"
-  type: "ReLU6"
+  name: "relu42"
+  type: "ReLU"
   bottom: "batch_norm_blob42"
-  top: "relu6_blob42"
+  top: "relu_blob42"
 }
 layer {
   name: "conv43"
   type: "Convolution"
-  bottom: "relu6_blob42"
+  bottom: "relu_blob42"
   top: "conv_blob43"
   convolution_param {
     num_output: 16
@@ -1958,7 +1958,7 @@ layer {
   top: "batch_norm_blob43"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -1971,10 +1971,10 @@ layer {
   }
 }
 layer {
-  name: "relu643"
-  type: "ReLU6"
+  name: "relu43"
+  type: "ReLU"
   bottom: "batch_norm_blob43"
-  top: "relu6_blob43"
+  top: "relu_blob43"
 }
 layer {
   name: "conv44"
@@ -2001,7 +2001,7 @@ layer {
   top: "batch_norm_blob44"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2014,15 +2014,15 @@ layer {
   }
 }
 layer {
-  name: "relu644"
-  type: "ReLU6"
+  name: "relu44"
+  type: "ReLU"
   bottom: "batch_norm_blob44"
-  top: "relu6_blob44"
+  top: "relu_blob44"
 }
 layer {
   name: "conv45"
   type: "Convolution"
-  bottom: "relu6_blob44"
+  bottom: "relu_blob44"
   top: "conv_blob45"
   convolution_param {
     num_output: 16
@@ -2044,7 +2044,7 @@ layer {
   top: "batch_norm_blob45"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2057,15 +2057,15 @@ layer {
   }
 }
 layer {
-  name: "relu645"
-  type: "ReLU6"
+  name: "relu45"
+  type: "ReLU"
   bottom: "batch_norm_blob45"
-  top: "relu6_blob45"
+  top: "relu_blob45"
 }
 layer {
   name: "conv46"
   type: "Convolution"
-  bottom: "relu6_blob45"
+  bottom: "relu_blob45"
   top: "conv_blob46"
   convolution_param {
     num_output: 16
@@ -2087,7 +2087,7 @@ layer {
   top: "batch_norm_blob46"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2100,17 +2100,17 @@ layer {
   }
 }
 layer {
-  name: "relu646"
-  type: "ReLU6"
+  name: "relu46"
+  type: "ReLU"
   bottom: "batch_norm_blob46"
-  top: "relu6_blob46"
+  top: "relu_blob46"
 }
 layer {
   name: "cat9"
   type: "Concat"
   bottom: "ave_pool_blob2"
-  bottom: "relu6_blob43"
-  bottom: "relu6_blob46"
+  bottom: "relu_blob43"
+  bottom: "relu_blob46"
   top: "cat_blob9"
   concat_param {
     axis: 1
@@ -2141,7 +2141,7 @@ layer {
   top: "batch_norm_blob47"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2154,15 +2154,15 @@ layer {
   }
 }
 layer {
-  name: "relu647"
-  type: "ReLU6"
+  name: "relu47"
+  type: "ReLU"
   bottom: "batch_norm_blob47"
-  top: "relu6_blob47"
+  top: "relu_blob47"
 }
 layer {
   name: "conv48"
   type: "Convolution"
-  bottom: "relu6_blob47"
+  bottom: "relu_blob47"
   top: "conv_blob48"
   convolution_param {
     num_output: 16
@@ -2184,7 +2184,7 @@ layer {
   top: "batch_norm_blob48"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2197,10 +2197,10 @@ layer {
   }
 }
 layer {
-  name: "relu648"
-  type: "ReLU6"
+  name: "relu48"
+  type: "ReLU"
   bottom: "batch_norm_blob48"
-  top: "relu6_blob48"
+  top: "relu_blob48"
 }
 layer {
   name: "conv49"
@@ -2227,7 +2227,7 @@ layer {
   top: "batch_norm_blob49"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2240,15 +2240,15 @@ layer {
   }
 }
 layer {
-  name: "relu649"
-  type: "ReLU6"
+  name: "relu49"
+  type: "ReLU"
   bottom: "batch_norm_blob49"
-  top: "relu6_blob49"
+  top: "relu_blob49"
 }
 layer {
   name: "conv50"
   type: "Convolution"
-  bottom: "relu6_blob49"
+  bottom: "relu_blob49"
   top: "conv_blob50"
   convolution_param {
     num_output: 16
@@ -2270,7 +2270,7 @@ layer {
   top: "batch_norm_blob50"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2283,15 +2283,15 @@ layer {
   }
 }
 layer {
-  name: "relu650"
-  type: "ReLU6"
+  name: "relu50"
+  type: "ReLU"
   bottom: "batch_norm_blob50"
-  top: "relu6_blob50"
+  top: "relu_blob50"
 }
 layer {
   name: "conv51"
   type: "Convolution"
-  bottom: "relu6_blob50"
+  bottom: "relu_blob50"
   top: "conv_blob51"
   convolution_param {
     num_output: 16
@@ -2313,7 +2313,7 @@ layer {
   top: "batch_norm_blob51"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2326,17 +2326,17 @@ layer {
   }
 }
 layer {
-  name: "relu651"
-  type: "ReLU6"
+  name: "relu51"
+  type: "ReLU"
   bottom: "batch_norm_blob51"
-  top: "relu6_blob51"
+  top: "relu_blob51"
 }
 layer {
   name: "cat10"
   type: "Concat"
   bottom: "cat_blob9"
-  bottom: "relu6_blob48"
-  bottom: "relu6_blob51"
+  bottom: "relu_blob48"
+  bottom: "relu_blob51"
   top: "cat_blob10"
   concat_param {
     axis: 1
@@ -2367,7 +2367,7 @@ layer {
   top: "batch_norm_blob52"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2380,15 +2380,15 @@ layer {
   }
 }
 layer {
-  name: "relu652"
-  type: "ReLU6"
+  name: "relu52"
+  type: "ReLU"
   bottom: "batch_norm_blob52"
-  top: "relu6_blob52"
+  top: "relu_blob52"
 }
 layer {
   name: "conv53"
   type: "Convolution"
-  bottom: "relu6_blob52"
+  bottom: "relu_blob52"
   top: "conv_blob53"
   convolution_param {
     num_output: 16
@@ -2410,7 +2410,7 @@ layer {
   top: "batch_norm_blob53"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2423,10 +2423,10 @@ layer {
   }
 }
 layer {
-  name: "relu653"
-  type: "ReLU6"
+  name: "relu53"
+  type: "ReLU"
   bottom: "batch_norm_blob53"
-  top: "relu6_blob53"
+  top: "relu_blob53"
 }
 layer {
   name: "conv54"
@@ -2453,7 +2453,7 @@ layer {
   top: "batch_norm_blob54"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2466,15 +2466,15 @@ layer {
   }
 }
 layer {
-  name: "relu654"
-  type: "ReLU6"
+  name: "relu54"
+  type: "ReLU"
   bottom: "batch_norm_blob54"
-  top: "relu6_blob54"
+  top: "relu_blob54"
 }
 layer {
   name: "conv55"
   type: "Convolution"
-  bottom: "relu6_blob54"
+  bottom: "relu_blob54"
   top: "conv_blob55"
   convolution_param {
     num_output: 16
@@ -2496,7 +2496,7 @@ layer {
   top: "batch_norm_blob55"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2509,15 +2509,15 @@ layer {
   }
 }
 layer {
-  name: "relu655"
-  type: "ReLU6"
+  name: "relu55"
+  type: "ReLU"
   bottom: "batch_norm_blob55"
-  top: "relu6_blob55"
+  top: "relu_blob55"
 }
 layer {
   name: "conv56"
   type: "Convolution"
-  bottom: "relu6_blob55"
+  bottom: "relu_blob55"
   top: "conv_blob56"
   convolution_param {
     num_output: 16
@@ -2539,7 +2539,7 @@ layer {
   top: "batch_norm_blob56"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2552,17 +2552,17 @@ layer {
   }
 }
 layer {
-  name: "relu656"
-  type: "ReLU6"
+  name: "relu56"
+  type: "ReLU"
   bottom: "batch_norm_blob56"
-  top: "relu6_blob56"
+  top: "relu_blob56"
 }
 layer {
   name: "cat11"
   type: "Concat"
   bottom: "cat_blob10"
-  bottom: "relu6_blob53"
-  bottom: "relu6_blob56"
+  bottom: "relu_blob53"
+  bottom: "relu_blob56"
   top: "cat_blob11"
   concat_param {
     axis: 1
@@ -2593,7 +2593,7 @@ layer {
   top: "batch_norm_blob57"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2606,15 +2606,15 @@ layer {
   }
 }
 layer {
-  name: "relu657"
-  type: "ReLU6"
+  name: "relu57"
+  type: "ReLU"
   bottom: "batch_norm_blob57"
-  top: "relu6_blob57"
+  top: "relu_blob57"
 }
 layer {
   name: "conv58"
   type: "Convolution"
-  bottom: "relu6_blob57"
+  bottom: "relu_blob57"
   top: "conv_blob58"
   convolution_param {
     num_output: 16
@@ -2636,7 +2636,7 @@ layer {
   top: "batch_norm_blob58"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2649,10 +2649,10 @@ layer {
   }
 }
 layer {
-  name: "relu658"
-  type: "ReLU6"
+  name: "relu58"
+  type: "ReLU"
   bottom: "batch_norm_blob58"
-  top: "relu6_blob58"
+  top: "relu_blob58"
 }
 layer {
   name: "conv59"
@@ -2679,7 +2679,7 @@ layer {
   top: "batch_norm_blob59"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2692,15 +2692,15 @@ layer {
   }
 }
 layer {
-  name: "relu659"
-  type: "ReLU6"
+  name: "relu59"
+  type: "ReLU"
   bottom: "batch_norm_blob59"
-  top: "relu6_blob59"
+  top: "relu_blob59"
 }
 layer {
   name: "conv60"
   type: "Convolution"
-  bottom: "relu6_blob59"
+  bottom: "relu_blob59"
   top: "conv_blob60"
   convolution_param {
     num_output: 16
@@ -2722,7 +2722,7 @@ layer {
   top: "batch_norm_blob60"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2735,15 +2735,15 @@ layer {
   }
 }
 layer {
-  name: "relu660"
-  type: "ReLU6"
+  name: "relu60"
+  type: "ReLU"
   bottom: "batch_norm_blob60"
-  top: "relu6_blob60"
+  top: "relu_blob60"
 }
 layer {
   name: "conv61"
   type: "Convolution"
-  bottom: "relu6_blob60"
+  bottom: "relu_blob60"
   top: "conv_blob61"
   convolution_param {
     num_output: 16
@@ -2765,7 +2765,7 @@ layer {
   top: "batch_norm_blob61"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2778,17 +2778,17 @@ layer {
   }
 }
 layer {
-  name: "relu661"
-  type: "ReLU6"
+  name: "relu61"
+  type: "ReLU"
   bottom: "batch_norm_blob61"
-  top: "relu6_blob61"
+  top: "relu_blob61"
 }
 layer {
   name: "cat12"
   type: "Concat"
   bottom: "cat_blob11"
-  bottom: "relu6_blob58"
-  bottom: "relu6_blob61"
+  bottom: "relu_blob58"
+  bottom: "relu_blob61"
   top: "cat_blob12"
   concat_param {
     axis: 1
@@ -2819,7 +2819,7 @@ layer {
   top: "batch_norm_blob62"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2832,15 +2832,15 @@ layer {
   }
 }
 layer {
-  name: "relu662"
-  type: "ReLU6"
+  name: "relu62"
+  type: "ReLU"
   bottom: "batch_norm_blob62"
-  top: "relu6_blob62"
+  top: "relu_blob62"
 }
 layer {
   name: "conv63"
   type: "Convolution"
-  bottom: "relu6_blob62"
+  bottom: "relu_blob62"
   top: "conv_blob63"
   convolution_param {
     num_output: 16
@@ -2862,7 +2862,7 @@ layer {
   top: "batch_norm_blob63"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2875,10 +2875,10 @@ layer {
   }
 }
 layer {
-  name: "relu663"
-  type: "ReLU6"
+  name: "relu63"
+  type: "ReLU"
   bottom: "batch_norm_blob63"
-  top: "relu6_blob63"
+  top: "relu_blob63"
 }
 layer {
   name: "conv64"
@@ -2905,7 +2905,7 @@ layer {
   top: "batch_norm_blob64"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2918,15 +2918,15 @@ layer {
   }
 }
 layer {
-  name: "relu664"
-  type: "ReLU6"
+  name: "relu64"
+  type: "ReLU"
   bottom: "batch_norm_blob64"
-  top: "relu6_blob64"
+  top: "relu_blob64"
 }
 layer {
   name: "conv65"
   type: "Convolution"
-  bottom: "relu6_blob64"
+  bottom: "relu_blob64"
   top: "conv_blob65"
   convolution_param {
     num_output: 16
@@ -2948,7 +2948,7 @@ layer {
   top: "batch_norm_blob65"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -2961,15 +2961,15 @@ layer {
   }
 }
 layer {
-  name: "relu665"
-  type: "ReLU6"
+  name: "relu65"
+  type: "ReLU"
   bottom: "batch_norm_blob65"
-  top: "relu6_blob65"
+  top: "relu_blob65"
 }
 layer {
   name: "conv66"
   type: "Convolution"
-  bottom: "relu6_blob65"
+  bottom: "relu_blob65"
   top: "conv_blob66"
   convolution_param {
     num_output: 16
@@ -2991,7 +2991,7 @@ layer {
   top: "batch_norm_blob66"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3004,17 +3004,17 @@ layer {
   }
 }
 layer {
-  name: "relu666"
-  type: "ReLU6"
+  name: "relu66"
+  type: "ReLU"
   bottom: "batch_norm_blob66"
-  top: "relu6_blob66"
+  top: "relu_blob66"
 }
 layer {
   name: "cat13"
   type: "Concat"
   bottom: "cat_blob12"
-  bottom: "relu6_blob63"
-  bottom: "relu6_blob66"
+  bottom: "relu_blob63"
+  bottom: "relu_blob66"
   top: "cat_blob13"
   concat_param {
     axis: 1
@@ -3045,7 +3045,7 @@ layer {
   top: "batch_norm_blob67"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3058,15 +3058,15 @@ layer {
   }
 }
 layer {
-  name: "relu667"
-  type: "ReLU6"
+  name: "relu67"
+  type: "ReLU"
   bottom: "batch_norm_blob67"
-  top: "relu6_blob67"
+  top: "relu_blob67"
 }
 layer {
   name: "conv68"
   type: "Convolution"
-  bottom: "relu6_blob67"
+  bottom: "relu_blob67"
   top: "conv_blob68"
   convolution_param {
     num_output: 16
@@ -3088,7 +3088,7 @@ layer {
   top: "batch_norm_blob68"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3101,10 +3101,10 @@ layer {
   }
 }
 layer {
-  name: "relu668"
-  type: "ReLU6"
+  name: "relu68"
+  type: "ReLU"
   bottom: "batch_norm_blob68"
-  top: "relu6_blob68"
+  top: "relu_blob68"
 }
 layer {
   name: "conv69"
@@ -3131,7 +3131,7 @@ layer {
   top: "batch_norm_blob69"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3144,15 +3144,15 @@ layer {
   }
 }
 layer {
-  name: "relu669"
-  type: "ReLU6"
+  name: "relu69"
+  type: "ReLU"
   bottom: "batch_norm_blob69"
-  top: "relu6_blob69"
+  top: "relu_blob69"
 }
 layer {
   name: "conv70"
   type: "Convolution"
-  bottom: "relu6_blob69"
+  bottom: "relu_blob69"
   top: "conv_blob70"
   convolution_param {
     num_output: 16
@@ -3174,7 +3174,7 @@ layer {
   top: "batch_norm_blob70"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3187,15 +3187,15 @@ layer {
   }
 }
 layer {
-  name: "relu670"
-  type: "ReLU6"
+  name: "relu70"
+  type: "ReLU"
   bottom: "batch_norm_blob70"
-  top: "relu6_blob70"
+  top: "relu_blob70"
 }
 layer {
   name: "conv71"
   type: "Convolution"
-  bottom: "relu6_blob70"
+  bottom: "relu_blob70"
   top: "conv_blob71"
   convolution_param {
     num_output: 16
@@ -3217,7 +3217,7 @@ layer {
   top: "batch_norm_blob71"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3230,17 +3230,17 @@ layer {
   }
 }
 layer {
-  name: "relu671"
-  type: "ReLU6"
+  name: "relu71"
+  type: "ReLU"
   bottom: "batch_norm_blob71"
-  top: "relu6_blob71"
+  top: "relu_blob71"
 }
 layer {
   name: "cat14"
   type: "Concat"
   bottom: "cat_blob13"
-  bottom: "relu6_blob68"
-  bottom: "relu6_blob71"
+  bottom: "relu_blob68"
+  bottom: "relu_blob71"
   top: "cat_blob14"
   concat_param {
     axis: 1
@@ -3271,7 +3271,7 @@ layer {
   top: "batch_norm_blob72"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3284,15 +3284,15 @@ layer {
   }
 }
 layer {
-  name: "relu672"
-  type: "ReLU6"
+  name: "relu72"
+  type: "ReLU"
   bottom: "batch_norm_blob72"
-  top: "relu6_blob72"
+  top: "relu_blob72"
 }
 layer {
   name: "conv73"
   type: "Convolution"
-  bottom: "relu6_blob72"
+  bottom: "relu_blob72"
   top: "conv_blob73"
   convolution_param {
     num_output: 16
@@ -3314,7 +3314,7 @@ layer {
   top: "batch_norm_blob73"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3327,10 +3327,10 @@ layer {
   }
 }
 layer {
-  name: "relu673"
-  type: "ReLU6"
+  name: "relu73"
+  type: "ReLU"
   bottom: "batch_norm_blob73"
-  top: "relu6_blob73"
+  top: "relu_blob73"
 }
 layer {
   name: "conv74"
@@ -3357,7 +3357,7 @@ layer {
   top: "batch_norm_blob74"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3370,15 +3370,15 @@ layer {
   }
 }
 layer {
-  name: "relu674"
-  type: "ReLU6"
+  name: "relu74"
+  type: "ReLU"
   bottom: "batch_norm_blob74"
-  top: "relu6_blob74"
+  top: "relu_blob74"
 }
 layer {
   name: "conv75"
   type: "Convolution"
-  bottom: "relu6_blob74"
+  bottom: "relu_blob74"
   top: "conv_blob75"
   convolution_param {
     num_output: 16
@@ -3400,7 +3400,7 @@ layer {
   top: "batch_norm_blob75"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3413,15 +3413,15 @@ layer {
   }
 }
 layer {
-  name: "relu675"
-  type: "ReLU6"
+  name: "relu75"
+  type: "ReLU"
   bottom: "batch_norm_blob75"
-  top: "relu6_blob75"
+  top: "relu_blob75"
 }
 layer {
   name: "conv76"
   type: "Convolution"
-  bottom: "relu6_blob75"
+  bottom: "relu_blob75"
   top: "conv_blob76"
   convolution_param {
     num_output: 16
@@ -3443,7 +3443,7 @@ layer {
   top: "batch_norm_blob76"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3456,17 +3456,17 @@ layer {
   }
 }
 layer {
-  name: "relu676"
-  type: "ReLU6"
+  name: "relu76"
+  type: "ReLU"
   bottom: "batch_norm_blob76"
-  top: "relu6_blob76"
+  top: "relu_blob76"
 }
 layer {
   name: "cat15"
   type: "Concat"
   bottom: "cat_blob14"
-  bottom: "relu6_blob73"
-  bottom: "relu6_blob76"
+  bottom: "relu_blob73"
+  bottom: "relu_blob76"
   top: "cat_blob15"
   concat_param {
     axis: 1
@@ -3497,7 +3497,7 @@ layer {
   top: "batch_norm_blob77"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3510,15 +3510,15 @@ layer {
   }
 }
 layer {
-  name: "relu677"
-  type: "ReLU6"
+  name: "relu77"
+  type: "ReLU"
   bottom: "batch_norm_blob77"
-  top: "relu6_blob77"
+  top: "relu_blob77"
 }
 layer {
   name: "conv78"
   type: "Convolution"
-  bottom: "relu6_blob77"
+  bottom: "relu_blob77"
   top: "conv_blob78"
   convolution_param {
     num_output: 16
@@ -3540,7 +3540,7 @@ layer {
   top: "batch_norm_blob78"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3553,10 +3553,10 @@ layer {
   }
 }
 layer {
-  name: "relu678"
-  type: "ReLU6"
+  name: "relu78"
+  type: "ReLU"
   bottom: "batch_norm_blob78"
-  top: "relu6_blob78"
+  top: "relu_blob78"
 }
 layer {
   name: "conv79"
@@ -3583,7 +3583,7 @@ layer {
   top: "batch_norm_blob79"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3596,15 +3596,15 @@ layer {
   }
 }
 layer {
-  name: "relu679"
-  type: "ReLU6"
+  name: "relu79"
+  type: "ReLU"
   bottom: "batch_norm_blob79"
-  top: "relu6_blob79"
+  top: "relu_blob79"
 }
 layer {
   name: "conv80"
   type: "Convolution"
-  bottom: "relu6_blob79"
+  bottom: "relu_blob79"
   top: "conv_blob80"
   convolution_param {
     num_output: 16
@@ -3626,7 +3626,7 @@ layer {
   top: "batch_norm_blob80"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3639,15 +3639,15 @@ layer {
   }
 }
 layer {
-  name: "relu680"
-  type: "ReLU6"
+  name: "relu80"
+  type: "ReLU"
   bottom: "batch_norm_blob80"
-  top: "relu6_blob80"
+  top: "relu_blob80"
 }
 layer {
   name: "conv81"
   type: "Convolution"
-  bottom: "relu6_blob80"
+  bottom: "relu_blob80"
   top: "conv_blob81"
   convolution_param {
     num_output: 16
@@ -3669,7 +3669,7 @@ layer {
   top: "batch_norm_blob81"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3682,17 +3682,17 @@ layer {
   }
 }
 layer {
-  name: "relu681"
-  type: "ReLU6"
+  name: "relu81"
+  type: "ReLU"
   bottom: "batch_norm_blob81"
-  top: "relu6_blob81"
+  top: "relu_blob81"
 }
 layer {
   name: "cat16"
   type: "Concat"
   bottom: "cat_blob15"
-  bottom: "relu6_blob78"
-  bottom: "relu6_blob81"
+  bottom: "relu_blob78"
+  bottom: "relu_blob81"
   top: "cat_blob16"
   concat_param {
     axis: 1
@@ -3723,7 +3723,7 @@ layer {
   top: "batch_norm_blob82"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3736,21 +3736,21 @@ layer {
   }
 }
 layer {
-  name: "relu682"
-  type: "ReLU6"
+  name: "relu82"
+  type: "ReLU"
   bottom: "batch_norm_blob82"
-  top: "relu6_blob82"
+  top: "relu_blob82"
 }
 layer {
   name: "ave_pool3"
   type: "Pooling"
-  bottom: "relu6_blob82"
+  bottom: "relu_blob82"
   top: "ave_pool_blob3"
   pooling_param {
     pool: AVE
     kernel_size: 2
     stride: 2
-    ceil_mode: false
+    round_mode: FLOOR
   }
 }
 layer {
@@ -3778,7 +3778,7 @@ layer {
   top: "batch_norm_blob83"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3791,15 +3791,15 @@ layer {
   }
 }
 layer {
-  name: "relu683"
-  type: "ReLU6"
+  name: "relu83"
+  type: "ReLU"
   bottom: "batch_norm_blob83"
-  top: "relu6_blob83"
+  top: "relu_blob83"
 }
 layer {
   name: "conv84"
   type: "Convolution"
-  bottom: "relu6_blob83"
+  bottom: "relu_blob83"
   top: "conv_blob84"
   convolution_param {
     num_output: 16
@@ -3821,7 +3821,7 @@ layer {
   top: "batch_norm_blob84"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3834,10 +3834,10 @@ layer {
   }
 }
 layer {
-  name: "relu684"
-  type: "ReLU6"
+  name: "relu84"
+  type: "ReLU"
   bottom: "batch_norm_blob84"
-  top: "relu6_blob84"
+  top: "relu_blob84"
 }
 layer {
   name: "conv85"
@@ -3864,7 +3864,7 @@ layer {
   top: "batch_norm_blob85"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3877,15 +3877,15 @@ layer {
   }
 }
 layer {
-  name: "relu685"
-  type: "ReLU6"
+  name: "relu85"
+  type: "ReLU"
   bottom: "batch_norm_blob85"
-  top: "relu6_blob85"
+  top: "relu_blob85"
 }
 layer {
   name: "conv86"
   type: "Convolution"
-  bottom: "relu6_blob85"
+  bottom: "relu_blob85"
   top: "conv_blob86"
   convolution_param {
     num_output: 16
@@ -3907,7 +3907,7 @@ layer {
   top: "batch_norm_blob86"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3920,15 +3920,15 @@ layer {
   }
 }
 layer {
-  name: "relu686"
-  type: "ReLU6"
+  name: "relu86"
+  type: "ReLU"
   bottom: "batch_norm_blob86"
-  top: "relu6_blob86"
+  top: "relu_blob86"
 }
 layer {
   name: "conv87"
   type: "Convolution"
-  bottom: "relu6_blob86"
+  bottom: "relu_blob86"
   top: "conv_blob87"
   convolution_param {
     num_output: 16
@@ -3950,7 +3950,7 @@ layer {
   top: "batch_norm_blob87"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -3963,17 +3963,17 @@ layer {
   }
 }
 layer {
-  name: "relu687"
-  type: "ReLU6"
+  name: "relu87"
+  type: "ReLU"
   bottom: "batch_norm_blob87"
-  top: "relu6_blob87"
+  top: "relu_blob87"
 }
 layer {
   name: "cat17"
   type: "Concat"
   bottom: "ave_pool_blob3"
-  bottom: "relu6_blob84"
-  bottom: "relu6_blob87"
+  bottom: "relu_blob84"
+  bottom: "relu_blob87"
   top: "cat_blob17"
   concat_param {
     axis: 1
@@ -4004,7 +4004,7 @@ layer {
   top: "batch_norm_blob88"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4017,15 +4017,15 @@ layer {
   }
 }
 layer {
-  name: "relu688"
-  type: "ReLU6"
+  name: "relu88"
+  type: "ReLU"
   bottom: "batch_norm_blob88"
-  top: "relu6_blob88"
+  top: "relu_blob88"
 }
 layer {
   name: "conv89"
   type: "Convolution"
-  bottom: "relu6_blob88"
+  bottom: "relu_blob88"
   top: "conv_blob89"
   convolution_param {
     num_output: 16
@@ -4047,7 +4047,7 @@ layer {
   top: "batch_norm_blob89"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4060,10 +4060,10 @@ layer {
   }
 }
 layer {
-  name: "relu689"
-  type: "ReLU6"
+  name: "relu89"
+  type: "ReLU"
   bottom: "batch_norm_blob89"
-  top: "relu6_blob89"
+  top: "relu_blob89"
 }
 layer {
   name: "conv90"
@@ -4090,7 +4090,7 @@ layer {
   top: "batch_norm_blob90"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4103,15 +4103,15 @@ layer {
   }
 }
 layer {
-  name: "relu690"
-  type: "ReLU6"
+  name: "relu90"
+  type: "ReLU"
   bottom: "batch_norm_blob90"
-  top: "relu6_blob90"
+  top: "relu_blob90"
 }
 layer {
   name: "conv91"
   type: "Convolution"
-  bottom: "relu6_blob90"
+  bottom: "relu_blob90"
   top: "conv_blob91"
   convolution_param {
     num_output: 16
@@ -4133,7 +4133,7 @@ layer {
   top: "batch_norm_blob91"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4146,15 +4146,15 @@ layer {
   }
 }
 layer {
-  name: "relu691"
-  type: "ReLU6"
+  name: "relu91"
+  type: "ReLU"
   bottom: "batch_norm_blob91"
-  top: "relu6_blob91"
+  top: "relu_blob91"
 }
 layer {
   name: "conv92"
   type: "Convolution"
-  bottom: "relu6_blob91"
+  bottom: "relu_blob91"
   top: "conv_blob92"
   convolution_param {
     num_output: 16
@@ -4176,7 +4176,7 @@ layer {
   top: "batch_norm_blob92"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4189,17 +4189,17 @@ layer {
   }
 }
 layer {
-  name: "relu692"
-  type: "ReLU6"
+  name: "relu92"
+  type: "ReLU"
   bottom: "batch_norm_blob92"
-  top: "relu6_blob92"
+  top: "relu_blob92"
 }
 layer {
   name: "cat18"
   type: "Concat"
   bottom: "cat_blob17"
-  bottom: "relu6_blob89"
-  bottom: "relu6_blob92"
+  bottom: "relu_blob89"
+  bottom: "relu_blob92"
   top: "cat_blob18"
   concat_param {
     axis: 1
@@ -4230,7 +4230,7 @@ layer {
   top: "batch_norm_blob93"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4243,15 +4243,15 @@ layer {
   }
 }
 layer {
-  name: "relu693"
-  type: "ReLU6"
+  name: "relu93"
+  type: "ReLU"
   bottom: "batch_norm_blob93"
-  top: "relu6_blob93"
+  top: "relu_blob93"
 }
 layer {
   name: "conv94"
   type: "Convolution"
-  bottom: "relu6_blob93"
+  bottom: "relu_blob93"
   top: "conv_blob94"
   convolution_param {
     num_output: 16
@@ -4273,7 +4273,7 @@ layer {
   top: "batch_norm_blob94"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4286,10 +4286,10 @@ layer {
   }
 }
 layer {
-  name: "relu694"
-  type: "ReLU6"
+  name: "relu94"
+  type: "ReLU"
   bottom: "batch_norm_blob94"
-  top: "relu6_blob94"
+  top: "relu_blob94"
 }
 layer {
   name: "conv95"
@@ -4316,7 +4316,7 @@ layer {
   top: "batch_norm_blob95"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4329,15 +4329,15 @@ layer {
   }
 }
 layer {
-  name: "relu695"
-  type: "ReLU6"
+  name: "relu95"
+  type: "ReLU"
   bottom: "batch_norm_blob95"
-  top: "relu6_blob95"
+  top: "relu_blob95"
 }
 layer {
   name: "conv96"
   type: "Convolution"
-  bottom: "relu6_blob95"
+  bottom: "relu_blob95"
   top: "conv_blob96"
   convolution_param {
     num_output: 16
@@ -4359,7 +4359,7 @@ layer {
   top: "batch_norm_blob96"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4372,15 +4372,15 @@ layer {
   }
 }
 layer {
-  name: "relu696"
-  type: "ReLU6"
+  name: "relu96"
+  type: "ReLU"
   bottom: "batch_norm_blob96"
-  top: "relu6_blob96"
+  top: "relu_blob96"
 }
 layer {
   name: "conv97"
   type: "Convolution"
-  bottom: "relu6_blob96"
+  bottom: "relu_blob96"
   top: "conv_blob97"
   convolution_param {
     num_output: 16
@@ -4402,7 +4402,7 @@ layer {
   top: "batch_norm_blob97"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4415,17 +4415,17 @@ layer {
   }
 }
 layer {
-  name: "relu697"
-  type: "ReLU6"
+  name: "relu97"
+  type: "ReLU"
   bottom: "batch_norm_blob97"
-  top: "relu6_blob97"
+  top: "relu_blob97"
 }
 layer {
   name: "cat19"
   type: "Concat"
   bottom: "cat_blob18"
-  bottom: "relu6_blob94"
-  bottom: "relu6_blob97"
+  bottom: "relu_blob94"
+  bottom: "relu_blob97"
   top: "cat_blob19"
   concat_param {
     axis: 1
@@ -4456,7 +4456,7 @@ layer {
   top: "batch_norm_blob98"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4469,15 +4469,15 @@ layer {
   }
 }
 layer {
-  name: "relu698"
-  type: "ReLU6"
+  name: "relu98"
+  type: "ReLU"
   bottom: "batch_norm_blob98"
-  top: "relu6_blob98"
+  top: "relu_blob98"
 }
 layer {
   name: "conv99"
   type: "Convolution"
-  bottom: "relu6_blob98"
+  bottom: "relu_blob98"
   top: "conv_blob99"
   convolution_param {
     num_output: 16
@@ -4499,7 +4499,7 @@ layer {
   top: "batch_norm_blob99"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4512,10 +4512,10 @@ layer {
   }
 }
 layer {
-  name: "relu699"
-  type: "ReLU6"
+  name: "relu99"
+  type: "ReLU"
   bottom: "batch_norm_blob99"
-  top: "relu6_blob99"
+  top: "relu_blob99"
 }
 layer {
   name: "conv100"
@@ -4542,7 +4542,7 @@ layer {
   top: "batch_norm_blob100"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4555,15 +4555,15 @@ layer {
   }
 }
 layer {
-  name: "relu6100"
-  type: "ReLU6"
+  name: "relu100"
+  type: "ReLU"
   bottom: "batch_norm_blob100"
-  top: "relu6_blob100"
+  top: "relu_blob100"
 }
 layer {
   name: "conv101"
   type: "Convolution"
-  bottom: "relu6_blob100"
+  bottom: "relu_blob100"
   top: "conv_blob101"
   convolution_param {
     num_output: 16
@@ -4585,7 +4585,7 @@ layer {
   top: "batch_norm_blob101"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4598,15 +4598,15 @@ layer {
   }
 }
 layer {
-  name: "relu6101"
-  type: "ReLU6"
+  name: "relu101"
+  type: "ReLU"
   bottom: "batch_norm_blob101"
-  top: "relu6_blob101"
+  top: "relu_blob101"
 }
 layer {
   name: "conv102"
   type: "Convolution"
-  bottom: "relu6_blob101"
+  bottom: "relu_blob101"
   top: "conv_blob102"
   convolution_param {
     num_output: 16
@@ -4628,7 +4628,7 @@ layer {
   top: "batch_norm_blob102"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4641,17 +4641,17 @@ layer {
   }
 }
 layer {
-  name: "relu6102"
-  type: "ReLU6"
+  name: "relu102"
+  type: "ReLU"
   bottom: "batch_norm_blob102"
-  top: "relu6_blob102"
+  top: "relu_blob102"
 }
 layer {
   name: "cat20"
   type: "Concat"
   bottom: "cat_blob19"
-  bottom: "relu6_blob99"
-  bottom: "relu6_blob102"
+  bottom: "relu_blob99"
+  bottom: "relu_blob102"
   top: "cat_blob20"
   concat_param {
     axis: 1
@@ -4682,7 +4682,7 @@ layer {
   top: "batch_norm_blob103"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4695,15 +4695,15 @@ layer {
   }
 }
 layer {
-  name: "relu6103"
-  type: "ReLU6"
+  name: "relu103"
+  type: "ReLU"
   bottom: "batch_norm_blob103"
-  top: "relu6_blob103"
+  top: "relu_blob103"
 }
 layer {
   name: "conv104"
   type: "Convolution"
-  bottom: "relu6_blob103"
+  bottom: "relu_blob103"
   top: "conv_blob104"
   convolution_param {
     num_output: 16
@@ -4725,7 +4725,7 @@ layer {
   top: "batch_norm_blob104"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4738,10 +4738,10 @@ layer {
   }
 }
 layer {
-  name: "relu6104"
-  type: "ReLU6"
+  name: "relu104"
+  type: "ReLU"
   bottom: "batch_norm_blob104"
-  top: "relu6_blob104"
+  top: "relu_blob104"
 }
 layer {
   name: "conv105"
@@ -4768,7 +4768,7 @@ layer {
   top: "batch_norm_blob105"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4781,15 +4781,15 @@ layer {
   }
 }
 layer {
-  name: "relu6105"
-  type: "ReLU6"
+  name: "relu105"
+  type: "ReLU"
   bottom: "batch_norm_blob105"
-  top: "relu6_blob105"
+  top: "relu_blob105"
 }
 layer {
   name: "conv106"
   type: "Convolution"
-  bottom: "relu6_blob105"
+  bottom: "relu_blob105"
   top: "conv_blob106"
   convolution_param {
     num_output: 16
@@ -4811,7 +4811,7 @@ layer {
   top: "batch_norm_blob106"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4824,15 +4824,15 @@ layer {
   }
 }
 layer {
-  name: "relu6106"
-  type: "ReLU6"
+  name: "relu106"
+  type: "ReLU"
   bottom: "batch_norm_blob106"
-  top: "relu6_blob106"
+  top: "relu_blob106"
 }
 layer {
   name: "conv107"
   type: "Convolution"
-  bottom: "relu6_blob106"
+  bottom: "relu_blob106"
   top: "conv_blob107"
   convolution_param {
     num_output: 16
@@ -4854,7 +4854,7 @@ layer {
   top: "batch_norm_blob107"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4867,17 +4867,17 @@ layer {
   }
 }
 layer {
-  name: "relu6107"
-  type: "ReLU6"
+  name: "relu107"
+  type: "ReLU"
   bottom: "batch_norm_blob107"
-  top: "relu6_blob107"
+  top: "relu_blob107"
 }
 layer {
   name: "cat21"
   type: "Concat"
   bottom: "cat_blob20"
-  bottom: "relu6_blob104"
-  bottom: "relu6_blob107"
+  bottom: "relu_blob104"
+  bottom: "relu_blob107"
   top: "cat_blob21"
   concat_param {
     axis: 1
@@ -4908,7 +4908,7 @@ layer {
   top: "batch_norm_blob108"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4921,15 +4921,15 @@ layer {
   }
 }
 layer {
-  name: "relu6108"
-  type: "ReLU6"
+  name: "relu108"
+  type: "ReLU"
   bottom: "batch_norm_blob108"
-  top: "relu6_blob108"
+  top: "relu_blob108"
 }
 layer {
   name: "conv109"
   type: "Convolution"
-  bottom: "relu6_blob108"
+  bottom: "relu_blob108"
   top: "conv_blob109"
   convolution_param {
     num_output: 16
@@ -4951,7 +4951,7 @@ layer {
   top: "batch_norm_blob109"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -4964,10 +4964,10 @@ layer {
   }
 }
 layer {
-  name: "relu6109"
-  type: "ReLU6"
+  name: "relu109"
+  type: "ReLU"
   bottom: "batch_norm_blob109"
-  top: "relu6_blob109"
+  top: "relu_blob109"
 }
 layer {
   name: "conv110"
@@ -4994,7 +4994,7 @@ layer {
   top: "batch_norm_blob110"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -5007,15 +5007,15 @@ layer {
   }
 }
 layer {
-  name: "relu6110"
-  type: "ReLU6"
+  name: "relu110"
+  type: "ReLU"
   bottom: "batch_norm_blob110"
-  top: "relu6_blob110"
+  top: "relu_blob110"
 }
 layer {
   name: "conv111"
   type: "Convolution"
-  bottom: "relu6_blob110"
+  bottom: "relu_blob110"
   top: "conv_blob111"
   convolution_param {
     num_output: 16
@@ -5037,7 +5037,7 @@ layer {
   top: "batch_norm_blob111"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -5050,15 +5050,15 @@ layer {
   }
 }
 layer {
-  name: "relu6111"
-  type: "ReLU6"
+  name: "relu111"
+  type: "ReLU"
   bottom: "batch_norm_blob111"
-  top: "relu6_blob111"
+  top: "relu_blob111"
 }
 layer {
   name: "conv112"
   type: "Convolution"
-  bottom: "relu6_blob111"
+  bottom: "relu_blob111"
   top: "conv_blob112"
   convolution_param {
     num_output: 16
@@ -5080,7 +5080,7 @@ layer {
   top: "batch_norm_blob112"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -5093,17 +5093,17 @@ layer {
   }
 }
 layer {
-  name: "relu6112"
-  type: "ReLU6"
+  name: "relu112"
+  type: "ReLU"
   bottom: "batch_norm_blob112"
-  top: "relu6_blob112"
+  top: "relu_blob112"
 }
 layer {
   name: "cat22"
   type: "Concat"
   bottom: "cat_blob21"
-  bottom: "relu6_blob109"
-  bottom: "relu6_blob112"
+  bottom: "relu_blob109"
+  bottom: "relu_blob112"
   top: "cat_blob22"
   concat_param {
     axis: 1
@@ -5134,7 +5134,7 @@ layer {
   top: "batch_norm_blob113"
   batch_norm_param {
     use_global_stats: true
-    eps: 9.9999997e-06
+    eps: 1e-05
   }
 }
 layer {
@@ -5147,21 +5147,21 @@ layer {
   }
 }
 layer {
-  name: "relu6113"
-  type: "ReLU6"
+  name: "relu113"
+  type: "ReLU"
   bottom: "batch_norm_blob113"
-  top: "relu6_blob113"
+  top: "relu_blob113"
 }
 layer {
   name: "ave_pool4"
   type: "Pooling"
-  bottom: "relu6_blob113"
+  bottom: "relu_blob113"
   top: "ave_pool_blob4"
   pooling_param {
     pool: AVE
     kernel_size: 7
     stride: 7
-    ceil_mode: false
+    round_mode: FLOOR
   }
 }
 layer {
