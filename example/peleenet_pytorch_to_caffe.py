@@ -1,7 +1,5 @@
 import torch
-from torch.autograd import Variable
 
-import pytorch_analyser
 import pytorch_to_caffe
 from PeleeNet import *
 
