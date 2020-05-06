@@ -1,12 +1,12 @@
 import torch
 
 import pytorch_to_caffe
-from PeleeNet import *
+from model.PeleeNet import *
 
 if __name__ == '__main__':
     name = 'peleenet'
     peleenet = PeleeNet(num_classes=9)
-    ckpt = torch.load('../assets/ckpt_peleenet.pth', map_location='cpu')
+    ckpt = torch.load('../assets/ckpt_peleenet_good.pth', map_location='cpu')
     peleenet.load_state_dict(ckpt['state_dict'])
     peleenet.eval()
 
